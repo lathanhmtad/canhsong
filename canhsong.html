@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CÁNH SÓNG MÃI VƯƠN XA - Lữ đoàn 575</title>
+    <style>
+        /* CSS Variables - Bảng màu quân đội */
+        :root {
+            --mil-green: #3b5323; /* Xanh rêu quân đội */
+            --mil-red: #da251d;   /* Đỏ cờ Tổ quốc */
+            --mil-gold: #ffcd00;  /* Vàng sao vàng */
+            --text-main: #333333;
+            --bg-body: #f4f6f4;
+            --bg-card: #ffffff;
+        }
+
+        /* Reset & Base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 5px rgba(218, 37, 29, 0.2); }
+            50% { text-shadow: 0 0 15px rgba(218, 37, 29, 0.5); }
+            100% { text-shadow: 0 0 5px rgba(218, 37, 29, 0.2); }
+        }
+
+        /* 1. Header */
+        header {
+            background-color: var(--mil-green);
+            border-bottom: 4px solid var(--mil-red);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 70px;
+            width: 70px;
+            object-fit: contain;
+            background-color: #fff;
+            border-radius: 50%;
+            padding: 3px;
+            box-shadow: 0 0 10px rgba(255, 205, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .header-title {
+            color: var(--mil-gold);
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Layout Main */
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        /* 2 & 3. Tiêu đề và Tác giả */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        /* .hero-section::after {
+            content: "★";
+            display: block;
+            color: var(--mil-gold);
+            font-size: 1.5rem;
+            margin-top: 15px;
+        } */
+
+        .main-title {
+            color: var(--mil-red);
+            font-size: 2.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            animation: titleGlow 3s infinite;
+        }
+
+        .author {
+            font-size: 1.1rem;
+            color: var(--mil-green);
+            font-style: italic;
+            background: #e9ece6;
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(59, 83, 35, 0.2);
+        }
+
+        /* 4. Hình ảnh minh họa */
+        .image-section {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        figure {
+            display: inline-block;
+            width: 100%;
+        }
+
+        .main-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border: 4px solid #fff;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .main-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        figcaption {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* 5. Nội dung bài viết */
+        .content-section {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            border-top: 5px solid var(--mil-green);
+            position: relative;
+        }
+
+        .content-section p {
+            margin-bottom: 20px;
+            font-size: 1.15rem;
+            text-align: justify;
+        }
+
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Hiệu ứng nổi bật cụm từ Chủ đề */
+        .highlight-text {
+            color: var(--mil-red);
+            font-weight: bold;
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight-text::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--mil-gold);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .highlight-text:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Khối kết luận nổi bật */
+        .conclusion-block {
+            margin-top: 30px;
+            padding: 20px 25px;
+            background-color: #fcf9eb;
+            border-left: 5px solid var(--mil-gold);
+            border-radius: 0 8px 8px 0;
+            color: var(--mil-green);
+            font-weight: 600;
+            font-size: 1.15rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #263617;
+            color: #aebc9e;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2rem;
+            }
+            .content-section {
+                padding: 25px;
+            }
+            .content-section p {
+                font-size: 1.05rem;
+            }
+            .author {
+                font-size: 0.95rem;
+            }
+            .header-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <img src="./logo.jpg" alt="Logo Lữ đoàn 575" class="logo">
+            <div class="header-title">Lữ đoàn 575</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h1 class="main-title">Cánh sóng mãi vươn xa</h1>
+            <div class="author">
+                <strong>TÁC GIẢ:</strong> Trung tá Nguyễn Hoài Đông, Chủ nhiệm Chính trị Lữ đoàn 575
+            </div>
+        </section>
+
+        <section class="image-section">
+            <figure>
+                <img src="./hinhanh.jpg" alt="Hình ảnh chiến sĩ thông tin Lữ đoàn 575" class="main-image">
+                <figcaption>Hình ảnh các chiến sĩ bảo đảm thông tin liên lạc thông suốt, vững chắc.</figcaption>
+            </figure>
+        </section>
+
+        <section class="content-section">
+            <p>
+                Những chiến sĩ thông tin luôn phát huy phẩm chất “Bộ đội Cụ Hồ” thời kỳ mới, thường xuyên học tập nâng cao trình độ đáp ứng yêu cầu tiến thẳng lên hiện đại, hình ảnh những chiến sĩ bảo đảm thông tin liên lạc, để mạch máu thông tin luôn thông suốt, vững chắc trong diễn tập bắn đạn thật tại thao trường TB2.
+            </p>
+            <p>
+                Hình ảnh người chiến sỹ thông tin trong thời kỳ mới với các trang bị thông tin hiện đại được trang bị đầy đủ để đáp ứng yêu cầu chiến tranh công nghệ cao. Với sự tập trung và kỷ luật luôn được thể hiện rõ trên ánh mắt của mỗi người. Mặc dù mỗi chiến sỹ đều có nhiệm vụ riêng nhưng tinh thần đồng đội luôn được thể hiện mạnh mẽ. Bức ảnh ghi lại một khoảnh khắc bảo đảm thông tin liên lạc nhưng cho chúng ta thấy sự hy sinh và cống hiến thầm lặng, không ngừng nghỉ để rèn luyện bản thân, sẵn sàng với nhiệm vụ bảo vệ Tổ quốc Việt Nam xã hội chủ nghĩa.
+            </p>
+            <p>
+                Với chủ đề: <span class="highlight-text">“Cánh sóng mãi vươn xa”</span> cho chúng ta thấy được sự vinh dự và tự hào của người chiến sỹ thông tin. Đây không chỉ là việc bảo đảm thông tin liên lạc thông suốt, vững chắc mà còn mang tính biểu tượng về sự lan tỏa của tinh thần, ý chí, sự dũng cảm của những người lính Cụ Hồ, vươn xa hơn nữa để bảo vệ toàn vẹn chủ quyền lãnh thổ thiêng liêng của Tổ quốc.
+            </p>
+            
+            <div class="conclusion-block">
+                Bức ảnh truyền tải một thông điệp mạnh mẽ về hình ảnh người chiến sỹ cách mạng: chuyên nghiệp, hiện đại, kỷ luật mà vẫn giữ vững được những phẩm chất tốt nhất của Bộ đội thông tin liên lạc trong thời kỳ mới.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; Tác phẩm Thuyết trình Ảnh - Lữ đoàn 575. Mạch máu thông tin luôn thông suốt.
+    </footer>
+
+</body>
+</html>
